@@ -1,12 +1,10 @@
 import React from 'react';
+import Table from './components/Table'
 import './App.css';
-import Filter from './Filter';
-import Table from './Table';
 
 function App() {
   return (
     <div className="App">
-      <Filter/>
       <Table/>
     </div>
   );

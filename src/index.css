@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* select box styles */
+.select-box-style {
+  width: 20%;
+  height: 30px;
+  font-size: 80%;
+  float: left;
+  margin: 0px 10px 0px 10px;
+}
+
+/* filter-style */
+.filter-style {
+  width: 60%;
+  height: 40px;
+  margin: 20px auto 5px auto;
+}
+
+/* button-style */
+.button-style {
+  height: 30px;
+  width: 60px;
+  font-size: 80%;
+  border: 1px solid #a6a6a6;
+  border-radius: 12px;
+  float: right;
+  margin-right: 10px;
+}
+
+/* table styles */
+.table-style {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #f2f2f2;
+}
+
+.header-style {
+  height: 50px;
+  background-color: #d1d1d1;
+}
+
+.cell-style {
+  padding: 15px;
+}
