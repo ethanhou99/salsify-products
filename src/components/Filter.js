@@ -20,7 +20,7 @@ class Filter extends Component {
   }
 
   clearFilter = () => {
-    this.setState({filter1: "", filter2: ""});
+    this.setState({filter1: "", filter2: "", filterType:''});
   }
 
   render() {

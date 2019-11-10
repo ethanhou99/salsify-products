@@ -21,6 +21,15 @@ code {
   margin: 0px 10px 0px 10px;
 }
 
+/* multiselect box styles */
+.multiselect-box-style {
+  width: 20%;
+  font-size: 80%;
+  float: left;
+  margin: 0px 10px 0px 10px;
+  border-radius: 4px;
+}
+
 /* filter-style */
 .filter-style {
   width: 60%;

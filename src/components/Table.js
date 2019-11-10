@@ -3,12 +3,14 @@ import Data from './Data';
 import SelectionBox from './SelectionBox';
 import Button from './Button';
 import datastore from '../datastore';
+import MultiSelection from './MultiSelection';
 
 const data = window.datastore;
 
 class Table extends Component {
   state = {
     filter1: '',
+    filterType: '',
     filter2: ''
   };
 
@@ -16,27 +18,31 @@ class Table extends Component {
       this.setState({ filter1: dataFromChild });
   }
 
+  setFilterType = (dataFromChild) => {
+    this.setState({ filterType: dataFromChild });
+  }
+
   setFilter2 = (dataFromChild) => {
     this.setState({ filter2: dataFromChild });
   }
 
   clearFilter = () => {
-    this.setState({filter1: '', filter2: ''});
+    this.setState({filter1: '', filter2: '', filterType: ''});
   }
 
-  makeOperator = (filter1) => {
-    if (filter1 === 'enumerated') {
+  makeOperator = (filterType) => {
+    if (filterType === 'enumerated') {
       return data.getOperators()
                  .filter(operator => 
                   operator.text !== ('Is greater than')
                   && operator.text !== ('Is less than')
                   && operator.text !== ('Contains'))
-    } else if (filter1 === 'string') {
+    } else if (filterType === 'string') {
       return data.getOperators()
                  .filter(operator => 
                   operator.text !== ('Is greater than') 
                   && operator.text !== ('Is less than'))
-    } else if (filter1 === 'number') {
+    } else if (filterType === 'number') {
       return data.getOperators()
                  .filter(operator => 
                   operator.text !== 'Contains')
@@ -46,6 +52,8 @@ class Table extends Component {
   }
 
   render() {
+    const {filter1, filter2, filterType} = this.state;
+
     return (
       <div>
         <div className='filter-style'>
@@ -55,13 +63,20 @@ class Table extends Component {
             func={(prop) => {return <option key={prop.id}>{prop.name}</option>}}
             funcType='property'
             onUpdate={this.setFilter1}
+            setType={this.setFilterType}
             />
           <SelectionBox
             defaultValue='Select a Operator'
-            items={this.makeOperator(this.state.filter1)}
+            items={this.makeOperator(filterType)}
             func={(op) => {return <option key={op.id}>{op.text}</option>}}
             funcType='operator'
             onUpdate={this.setFilter2}
+            />
+          <MultiSelection 
+            className='multiselect-box-style'
+            items={data}
+            filterA={filter1}
+            filterB={filter2}
             />
           <Button onUpdate={this.clearFilter}/>
         </div>

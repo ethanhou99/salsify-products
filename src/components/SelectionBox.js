@@ -18,7 +18,8 @@ class SelectionBox extends Component {
   handleChange = (e) => {
     if (e.target.value !== '') {
       if (this.props.funcType === 'property') {
-          this.props.onUpdate(this.getDataType(e.target.value).type);
+          this.props.setType(this.getDataType(e.target.value).type);
+          this.props.onUpdate(e.target.value);
           this.setState({filterValue: e.target.value});
       } else if (this.props.funcType === 'operator') {
         this.props.onUpdate(e.target.value);
