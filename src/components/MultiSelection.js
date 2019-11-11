@@ -21,7 +21,7 @@ class MultiSelection extends Component {
       .map(val => set.add(val.value)));
     var array = [...set];
     if (array !== null && (typeof array[0] === 'number')) {
-      return array.sort((a, b) => a - b).map(val => <option>{val}</option>)
+      return array.sort((a, b) => a - b).map(val => <option key={val}>{val}</option>)
     }
     return array.sort().map(val => <option key={val} value={val}>{val}</option>)
   }
@@ -51,7 +51,7 @@ class MultiSelection extends Component {
           {this.makeSelection(items, filterA)}
         </select>
         <div className='warning-style'>
-          * Hold down the Ctrl (Win) or Command (Mac) button to unselect and select multiple options.
+          * Hold down the Ctrl (Win) or Command (Mac) button to select and unselect multiple options.
         </div>
       </div>
     )

@@ -14,7 +14,7 @@ code {
 
 /* select box styles */
 .select-box-style {
-  width: 20%;
+  width: 18%;
   height: 30px;
   font-size: 80%;
   float: left;
@@ -23,7 +23,7 @@ code {
 
 /* multiselect box styles */
 .multiselect-box-style {
-  width: 20%;
+  width: 18%;
   font-size: 80%;
   float: left;
   margin: 0px 10px 5px 10px;
@@ -32,21 +32,22 @@ code {
 .warning-style {
   font-size: 80%;
   float: left;
-  width: 20%;
+  width: 18%;
   margin: auto auto 5px auto;
 }
 
 /* filter-style */
 .filter-style {
-  width: 60%;
+  width: 70%;
   height: 40px;
   margin: 20px auto 5px auto;
+  vertical-align: top;
 }
 
 /* button-style */
 .button-style {
   height: 30px;
-  width: 60px;
+  width: 10%;
   font-size: 80%;
   border: 1px solid #a6a6a6;
   border-radius: 4px;
@@ -56,7 +57,7 @@ code {
 
 /* input-style */
 .input-style {
-  width: 20%;
+  width: 18%;
   height: 25px;
   font-size: 80%;
   float: left;
@@ -66,14 +67,15 @@ code {
 
 /* table styles */
 .table-style {
-  width: 60%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid #f2f2f2;
+  vertical-align: top;
 }
 
 .header-style {
-  height: 50px;
+  height: 40px;
   background-color: #d1d1d1;
 }
 

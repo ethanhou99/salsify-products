@@ -29,25 +29,30 @@ class Data extends Component {
     } else if (filter1 === 'wireless') {
       propId = 4;
     }
-    
+
     if (propId !== -1 && (filter2 === 'Has any value' 
                       || filter2 === 'Has no value' 
-                      || (filter3 && filter3.length)) !== 0) {
+                      || (filter3 && filter3.length) 
+                      || searchVal !== '') !== 0) {
       if (filter2 === 'Equals') {
-        return productList.filter(prop => filter3.includes(prop[propId].value.toString()));
+        return productList.filter(prop => 
+          prop[propId] !== undefined && filter3.includes(prop[propId].value.toString()));
       } else if (filter2 === 'Is greater than') {
-        return productList.filter(prop => prop[propId].value > filter3);
+        return productList.filter(prop => 
+          prop[propId] !== undefined && prop[propId].value > filter3);
       } else if (filter2 === 'Is less than') {
-        return productList.filter(prop => prop[propId].value < filter3);
+        return productList.filter(prop => 
+          prop[propId] !== undefined && prop[propId].value < filter3);
       } else if (filter2 === 'Has any value') {
         return productList.filter(prop => prop[propId] !== undefined);
       } else if (filter2 === 'Has no value') {
         return productList.filter(prop => prop[propId] === undefined);
       }else if (filter2 === 'Is any of') {
-        return productList.filter(prop => filter3.includes(prop[propId].value));
+        return productList.filter(prop => 
+          prop[propId] !== undefined && filter3.includes(prop[propId].value.toString()));
       } else if (filter2 === 'Contains') {
         return productList.filter(prop => 
-          prop[propId].value.toLowerCase().includes(searchVal.toLowerCase()));
+          prop[propId] !== undefined && prop[propId].value.toLowerCase().includes(searchVal.toLowerCase()));
       }
     }
     
@@ -70,9 +75,8 @@ class Data extends Component {
     const productList = content.getProducts().map(product => product.property_values);
     const filteredList = this.filterData(productList, filterA, filterB, filterC);
     return (
-      <div>
-        <style>{"tr:nth-child(even) {background-color: #f2f2f2;}"}</style>
         <table className='table-style'>
+          <style>{"tr:nth-child(even) {background-color: #f2f2f2;}"}</style>
           <thead>
             {this.renderTableHeads(data)}
           </thead>
@@ -80,7 +84,6 @@ class Data extends Component {
             {this.renderTableRows(this.makeData(filteredList))}
           </tbody>
         </table>
-      </div>
     )
   }
 }

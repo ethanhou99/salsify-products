@@ -3,8 +3,8 @@ import Data from './Data';
 import SelectionBox from './SelectionBox';
 import Button from './Button';
 import Input from './Input';
-import datastore from '../datastore';
 import MultiSelection from './MultiSelection';
+import datastore from '../datastore';
 
 const data = window.datastore;
 
@@ -39,6 +39,7 @@ class Table extends Component {
 
   clearFilter = () => {
     this.setState({filter1: '', filter2: '', filter3: [], filterType: '', searchVal: ''});
+    window.location.reload()
   }
 
   makeOperator = (filterType) => {

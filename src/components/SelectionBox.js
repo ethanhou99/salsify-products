@@ -42,7 +42,7 @@ class SelectionBox extends Component {
       <select className='select-box-style' 
         onChange={this.handleChange} 
         value={this.state.filterValue}>
-          <option>{defaultVal}</option>
+          <option value=''>{defaultVal}</option>
           { itemList }
       </select>
     )
