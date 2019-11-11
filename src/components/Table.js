@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Data from './Data';
 import SelectionBox from './SelectionBox';
 import Button from './Button';
+import Input from './Input';
 import datastore from '../datastore';
 import MultiSelection from './MultiSelection';
 
@@ -11,7 +12,9 @@ class Table extends Component {
   state = {
     filter1: '',
     filterType: '',
-    filter2: ''
+    filter2: '',
+    filter3: [],
+    searchVal: ''
   };
 
   setFilter1 = (dataFromChild) => {
@@ -26,8 +29,16 @@ class Table extends Component {
     this.setState({ filter2: dataFromChild });
   }
 
+  setFilter3 = (dataFromChild) => {
+    this.setState({ filter3: dataFromChild });
+  }
+
+  setSearchVal = (dataFromChild) => {
+    this.setState({ searchVal: dataFromChild });
+  }
+
   clearFilter = () => {
-    this.setState({filter1: '', filter2: '', filterType: ''});
+    this.setState({filter1: '', filter2: '', filter3: [], filterType: '', searchVal: ''});
   }
 
   makeOperator = (filterType) => {
@@ -51,36 +62,64 @@ class Table extends Component {
     }
   }
 
+  renderInput = (filter2) => {
+    if (filter2 === 'Contains') {
+      return <Input 
+              className='input-style' 
+              placeholder='Type value to search'
+              onUpdate={this.setSearchVal}
+              />
+    }
+  }
+
+  renderMultiSelect = (filter1, filter2) => {
+    if (filter2 !== '' && filter2 !=='Contains' 
+                       && filter2 !== 'Has any value' 
+                       && filter2 !== 'Has no value') {
+      return <MultiSelection 
+              className='multiselect-box-style'
+              items={data}
+              filterA={filter1}
+              filterB={filter2}
+              onUpdate={this.setFilter3}
+              />
+    }
+  }
+
   render() {
-    const {filter1, filter2, filterType} = this.state;
+    const {filter1, filter2, filter3, filterType, searchVal} = this.state;
 
     return (
       <div>
         <div className='filter-style'>
           <SelectionBox
-            defaultValue='Select a Property'
+            defaultVal='Select a Property'
             items={data.getProperties()}
             func={(prop) => {return <option key={prop.id}>{prop.name}</option>}}
             funcType='property'
             onUpdate={this.setFilter1}
             setType={this.setFilterType}
+            resetBase={filter1}
             />
           <SelectionBox
-            defaultValue='Select a Operator'
+            defaultVal='Select a Operator'
             items={this.makeOperator(filterType)}
             func={(op) => {return <option key={op.id}>{op.text}</option>}}
             funcType='operator'
             onUpdate={this.setFilter2}
+            resetBase={filter2}
             />
-          <MultiSelection 
-            className='multiselect-box-style'
-            items={data}
-            filterA={filter1}
-            filterB={filter2}
-            />
+          {this.renderMultiSelect(filter1, filter2)}
+          {this.renderInput(filter2)}
           <Button onUpdate={this.clearFilter}/>
         </div>
-        <Data content={data} onUpdate={this.clearFilter}/>
+        <Data 
+          content={data}
+          onUpdate={this.clearFilter}
+          filterA={filter1}
+          filterB={filter2}
+          filterC={filter3}
+          searchVal={searchVal}/>
       </div>
     )
   }

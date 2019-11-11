@@ -23,26 +23,38 @@ class MultiSelection extends Component {
     if (array !== null && (typeof array[0] === 'number')) {
       return array.sort((a, b) => a - b).map(val => <option>{val}</option>)
     }
-    return array.sort().map(val => <option>{val}</option>)
+    return array.sort().map(val => <option key={val} value={val}>{val}</option>)
   }
+
+  handleChange = () => {
+    var result=[];
+    var x=document.getElementById('select-props');
+    for (var i = 0; i < x.options.length; i++) {
+      if(x.options[i].selected){
+            result.push(x.options[i].value);
+        }
+      this.props.onUpdate(result);
+    }
+    
+  };
 
   render() {
     const {items, className, filterA} = this.props;
-    
-    if (filterA !== '') {
-      return (
-        <select
+  
+    return (
+      <div>
+        <select multiple
+          id='select-props'
           className={className}
-          multiple='multiple'
-          size='3'>
+          onChange={this.handleChange}
+          size='4'>
           {this.makeSelection(items, filterA)}
         </select>
-      )
-    } else {
-      return (
-        null
-      )
-    }
+        <div className='warning-style'>
+          * Hold down the Ctrl (Win) or Command (Mac) button to unselect and select multiple options.
+        </div>
+      </div>
+    )
   }
 }
 

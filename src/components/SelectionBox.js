@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class SelectionBox extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    defaultValue: PropTypes.string.isRequired,
+    defaultVal: PropTypes.string.isRequired,
     func: PropTypes.func.isRequired
   }
 
@@ -36,13 +36,15 @@ class SelectionBox extends Component {
   }
 
   render() {
-    const {items, defaultValue, func} = this.props;
+    const {items, defaultVal, func} = this.props;
     var itemList = items.map(func)
     return (
-        <select className='select-box-style' onChange={this.handleChange} value={this.state.filterValue}>
-          <option value=''>{defaultValue}</option>
+      <select className='select-box-style' 
+        onChange={this.handleChange} 
+        value={this.state.filterValue}>
+          <option>{defaultVal}</option>
           { itemList }
-        </select>
+      </select>
     )
   }
 }
