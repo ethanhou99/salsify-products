@@ -1,68 +1,47 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Salsify Products Exercise
 
-In the project directory, you can run:
+This is a frontend project exercise from Salsify. You can also check the live site [here](https://salsify-products.herokuapp.com/)
 
-### `yarn start`
+### Run the project
+- Go to the project root folder in terminal and run:
+```
+> npm install
+> npm start
+```
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Run the tests
+- Go to the project root folder in terminal and run:
+```
+> npm run test
+```
+### Project structure
+- App.js
+  - test folder (contains template test cases)
+  - components folder(contains all the needed components)
+   - Button.js
+   - Data.js
+   - Input.js
+   - MultiSelection.js
+   - SelectionBox.js
+   - Table.js
+  - datastore.js
+  - index.css (contains all the css settings)
+  
+### Software Design
+* This is a React project.
+* Since the project is not a big project, I didn't use Redux to manage the state.
+* The table contains two parts: filters and data.
+* Dataflow should pass the filter first, then render on the table.
+* I used four components to help users setup the filter:
+  * Selection box, reusable componnt used to setup the `property` and `operator`.
+  * MultiSelection, used to setup specific `property` options and enable user to do the multiselection.
+  * Button, clear button to reset the filters.
+  * Input, only render if the the `property` filter is set to `Contains`, user can type key word here to search.
+* Data.js is used to parse the filtered data to the table.
+* Table.js, the super component to organize the rest components.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Software Test
+I used `JEST` and `React Testing Library` to do the software test and you can find some test templates under the `__tests__` folder. Compared to the other testing library, I think `React Testing Library` is more like a test library from the perspective of the user. For example, with the help of fireEvent, the JEST can seek the button based on the button text(and users can see the text in the real world)instead of the component id which is defined in the code.
