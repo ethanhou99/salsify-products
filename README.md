@@ -36,7 +36,7 @@ This is a frontend project exercise from Salsify. You can also check the live si
 * The table contains two parts: filters and data.
 * Dataflow should pass the filter first, then render on the table.
 * I used four components to help users setup the filter:
-  * Selection box, reusable componnt used to setup the `property` and `operator`.
+  * Selection box, reusable component used to setup the `property` and `operator`.
   * MultiSelection, used to setup specific `property` options and enable user to do the multiselection.
   * Button, clear button to reset the filters.
   * Input, only render if the the `property` filter is set to `Contains`, user can type key word here to search.
