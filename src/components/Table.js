@@ -89,10 +89,10 @@ class Table extends Component {
 
   render() {
     const {filter1, filter2, filter3, filterType, searchVal} = this.state;
-
     return (
       <div>
         <div className='filter-style'>
+          <div className='title-style'>Salsify Product List</div>
           <SelectionBox
             defaultVal='Select a Property'
             items={data.getProperties()}

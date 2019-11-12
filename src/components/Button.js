@@ -10,7 +10,7 @@ class Button extends Component {
       <button 
         type="button" 
         className="button-style" 
-        onClick={this.handleClick}>Clear
+        onClick={this.props.onUpdate}>Clear
       </button>
     )
   }
