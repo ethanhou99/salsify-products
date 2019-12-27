@@ -59,3 +59,5 @@ I spent three afternoons on this project, from Nov. 9 to Nov. 11. More details c
 
 ### Software Test
 I used `JEST` and `React Testing Library` to do the software test and you can find some test templates under the `__tests__` folder. Compared to the other testing library, I think `React Testing Library` is more like a test library from the perspective of the user. For example, with the help of fireEvent, the JEST can seek the button based on the button text(and users can see the text in the real world)instead of the component id which is defined in the code.
+
+[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=KOxbO0EI4MA "Audi R8")
